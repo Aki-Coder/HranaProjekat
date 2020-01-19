@@ -2,6 +2,7 @@ package model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import java.util.List;
 
 
 /**
@@ -17,15 +18,14 @@ public class Stavka implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idStavka;
 
+	//bi-directional many-to-one association to Porudzbina
+	@OneToMany(mappedBy="stavka")
+	private List<Porudzbina> porudzbinas;
+
 	//bi-directional many-to-one association to Jelo
 	@ManyToOne
 	@JoinColumn(name="Jelo_idJelo")
 	private Jelo jelo;
-
-	//bi-directional many-to-one association to Porudzbina
-	@ManyToOne
-	@JoinColumn(name="Porudzbina_idPorudzbina")
-	private Porudzbina porudzbina;
 
 	public Stavka() {
 	}
@@ -38,20 +38,34 @@ public class Stavka implements Serializable {
 		this.idStavka = idStavka;
 	}
 
+	public List<Porudzbina> getPorudzbinas() {
+		return this.porudzbinas;
+	}
+
+	public void setPorudzbinas(List<Porudzbina> porudzbinas) {
+		this.porudzbinas = porudzbinas;
+	}
+
+	public Porudzbina addPorudzbina(Porudzbina porudzbina) {
+		getPorudzbinas().add(porudzbina);
+		porudzbina.setStavka(this);
+
+		return porudzbina;
+	}
+
+	public Porudzbina removePorudzbina(Porudzbina porudzbina) {
+		getPorudzbinas().remove(porudzbina);
+		porudzbina.setStavka(null);
+
+		return porudzbina;
+	}
+
 	public Jelo getJelo() {
 		return this.jelo;
 	}
 
 	public void setJelo(Jelo jelo) {
 		this.jelo = jelo;
-	}
-
-	public Porudzbina getPorudzbina() {
-		return this.porudzbina;
-	}
-
-	public void setPorudzbina(Porudzbina porudzbina) {
-		this.porudzbina = porudzbina;
 	}
 
 }
