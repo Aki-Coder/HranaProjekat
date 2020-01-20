@@ -4,13 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Web portal za dostavu hrane</title>
+<title>Jela iz restorana</title>
 </head>
 <body>
-
-	<a href="">Vlasnik restorana</a><br>
-	<a href="">Radnik</a><br>
-	<a href="">Korisnik aplikacije</a>
 
 </body>
 </html>
