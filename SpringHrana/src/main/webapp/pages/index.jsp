@@ -8,7 +8,7 @@
 </head>
 <body>
 
-	<a href="">Vlasnik restorana</a><br>
+	<a href="/Projekat/korisnikController/pozoviStranicuJelo">Prikaz jela</a><br>
 	<a href="">Radnik</a><br>
 	<a href="">Korisnik aplikacije</a>
 
