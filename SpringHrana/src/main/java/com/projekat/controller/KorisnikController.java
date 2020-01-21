@@ -1,12 +1,18 @@
 package com.projekat.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -17,6 +23,7 @@ import com.projekat.repository.KuhinjaRepository;
 import model.Jelo;
 import model.Kategorija;
 import model.Kuhinja;
+import model.Porudzbina;
 
 @Controller
 @RequestMapping(value = "/korisnikController")
@@ -76,7 +83,30 @@ public class KorisnikController {
 			listaJela.add(j);
 		}
 		
+		int cena = listaJela.stream().collect(Collectors.summingInt(Jelo::getCena));
+		
 		request.getSession().setAttribute("listaJela", listaJela);
+		request.getSession().setAttribute("cena", cena);
 		return "naruciJelo";
+	}
+	
+	@RequestMapping(value = "/poruci", method = RequestMethod.POST)
+	public String poruci(HttpServletRequest request,String adresa,Date datum) {
+		
+		Integer cena =(Integer) request.getSession().getAttribute("cena");
+		
+		Porudzbina p = new Porudzbina();
+		p.setAdresaPorudzbine(adresa);
+		p.setDatum(datum);
+		p.setUkupnaCena(cena);
+		
+		return "poruka";
+	}
+	
+	@InitBinder
+	public void initBinder(WebDataBinder binder) {
+	    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+	    sdf.setLenient(true);
+	    binder.registerCustomEditor(Date.class, new CustomDateEditor(sdf, true));
 	}
 }
