@@ -19,9 +19,7 @@
 		<input type="submit" value = "Unesite novo jelo"><br>
 	</form>
 	
-	<c:if test="${!empty jelo }">
-		Jelo se ne moze dodati.
-	</c:if>
+
 
 </body>
 </html>

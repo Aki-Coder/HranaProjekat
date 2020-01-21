@@ -11,9 +11,9 @@ import model.Kuhinja;
 
 public interface KuhinjaRepository extends JpaRepository<Kuhinja, Integer> {
 	
-//	@Query("select j from Jelo j where j.kuhinja.vrstaKuhinje like :vrstaKuhinje")
-//	List<Kuhinja> findByKuhinja(@Param("vrstaKuhinje") String kuhinja);
-	public List<Kuhinja> findByVrstaKuhinje(String vrstaKuhinje);
+	@Query("select k from Kuhinja k where k.vrstaKuhinje like :vrstaKuhinje")
+	public List<Kuhinja> findByKuhinja(@Param("vrstaKuhinje") String kuhinja);
+	//public List<Kuhinja> findByVrstaKuhinje(String vrstaKuhinje);
 	
 
 }

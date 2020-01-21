@@ -10,8 +10,8 @@ import model.Kategorija;
 
 public interface KategorijaRepositorty  extends JpaRepository<Kategorija, Integer>{
 	
-//	@Query("select j from Jelo j where j.kategorija.vrstaKategorije like :vrstaKategorije ")
-//	public List<Kategorija> findByJela(@Param("vrstaKategorije") String kategorija);
+	@Query("select k from Kategorija k where k.vrstaKategorije like :vrstaKategorije ")
+	public List<Kategorija> findByKategorija(@Param("vrstaKategorije") String kategorija);
 
-	public List<Kategorija> findByVrstaKategorije(String vrstaKategorije);
+	//public List<Kategorija> findByVrstaKategorije(String vrstaKategorije);
 }

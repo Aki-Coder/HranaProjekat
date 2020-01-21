@@ -42,11 +42,14 @@ public class VlasnikController {
 		j.setDetalji(detaljiJ);
 		j.setCena(cenaJ);
 	
-		List<Kategorija> kategorije = kr.findByVrstaKategorije(kategorijaJ);
-		List<Kuhinja> kuhinje = kuh.findByVrstaKuhinje(kuhinjaJ);
+		List<Kategorija> kategorije = kr.findByKategorija(kategorijaJ);
+		List<Kuhinja> kuhinje = kuh.findByKuhinja(kuhinjaJ);
+		
+		
+		
 		
 		Kuhinja k;
-		if(kuhinje.isEmpty()) {
+		if(kuhinje == null) {
 			k = new Kuhinja();
 			k.setVrstaKuhinje(kuhinjaJ);
 			kuh.save(k);
