@@ -36,11 +36,16 @@
 			</c:if>
 			<input type="submit" value="Pretraga">
 		</form>
+		
+		
 	<br>
 	<c:if test="${empty jela }">
 		<span>Nema dostupnih jela.</span>
 	</c:if>
+	
+	
 	<c:if test="${!empty jela }">
+	<form action="/Projekat/korisnikController/naruciJelo" method="get">
 		<table border="1">
 			<tr>
 				<th>Naziv jela</th>
@@ -55,13 +60,16 @@
 					<td>${j.detalji }</td>
 					<td>${j.cena }</td>
 					<td>
-						<a href="/Pozoriste/korisnikController/naruciJelo?id=${j.idJelo}">Naruci</a>
+						<input type="checkbox" name="checkBox"  value = "${j.idJelo }">
 					</td>
 				</tr>
 			</c:forEach>
-		</table>
+		</table><br>
+		
+		<input type="submit" value="Naruci odabrana jela">
+		</form>
 	</c:if>
-	</form>
+	
 
 </body>
 </html>

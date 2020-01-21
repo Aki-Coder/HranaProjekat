@@ -67,7 +67,16 @@ public class KorisnikController {
 	}
 	
 	@RequestMapping(value = "/naruciJelo", method = RequestMethod.GET)
-	public String naruciJelo(Integer id, HttpServletRequest request) {
+	public String naruciJelo(HttpServletRequest request ) {
+		String jela [] = request.getParameterValues("checkBox");
+		
+		List<Jelo> listaJela = new ArrayList<>();
+		for (String jelo : jela) {
+			Jelo j = jr.findById(Integer.parseInt(jelo)).get();
+			listaJela.add(j);
+		}
+		
+		request.getSession().setAttribute("listaJela", listaJela);
 		return "naruciJelo";
 	}
 }
