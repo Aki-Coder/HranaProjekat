@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Jela iz restorana</title>
+
 </head>
 <body>
 
@@ -22,7 +23,7 @@
 				<span>Na staju nema dostupnih kategorija.</span>
 			</c:if>
 			
-				 <br>
+				 
 			<c:if test="${!empty kuhinje }"> 
 			 <select name="kuhinja">
 				<c:forEach var="ku" items="${kuhinje }">
@@ -35,7 +36,7 @@
 			</c:if>
 			<input type="submit" value="Pretraga">
 		</form>
-	
+	<br>
 	<c:if test="${empty jela }">
 		<span>Nema dostupnih jela.</span>
 	</c:if>
@@ -45,7 +46,7 @@
 				<th>Naziv jela</th>
 				<th>Detalji o jelu</th>
 				<th>Cena jela</th>
-				<th>Naruci jelo iz date kategorije</th>
+				<th>Naruci</th>
 			</tr>
 
 			<c:forEach var="j" items="${jela }">
@@ -53,6 +54,9 @@
 					<td>${j.naziv }</td>
 					<td>${j.detalji }</td>
 					<td>${j.cena }</td>
+					<td>
+						<a href="/Pozoriste/korisnikController/naruciJelo?id=${j.idJelo}">Naruci</a>
+					</td>
 				</tr>
 			</c:forEach>
 		</table>

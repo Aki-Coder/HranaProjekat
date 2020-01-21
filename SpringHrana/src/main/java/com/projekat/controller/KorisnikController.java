@@ -65,4 +65,9 @@ public class KorisnikController {
 		request.getSession().setAttribute("jela", jela);
 		return "jela";
 	}
+	
+	@RequestMapping(value = "/naruciJelo", method = RequestMethod.GET)
+	public String naruciJelo(Integer id, HttpServletRequest request) {
+		return "naruciJelo";
+	}
 }

@@ -9,6 +9,7 @@
 <body>
 
 	<a href="/Projekat/korisnikController/pozoviStranicuJelo">Prikaz jela</a><br>
+	<a href="/Projekat/pages/unosJela.jsp">Unos novog jela</a>
 	<a href="">Radnik</a><br>
 	<a href="">Korisnik aplikacije</a>
 
