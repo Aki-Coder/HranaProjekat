@@ -38,9 +38,9 @@ public class Jelo implements Serializable {
 	@OneToMany(mappedBy="jelo")
 	private List<Komentar> komentars;
 
-	//bi-directional many-to-one association to Stavka
-	@OneToMany(mappedBy="jelo")
-	private List<Stavka> stavkas;
+	//bi-directional many-to-many association to Porudzbina
+	@ManyToMany(mappedBy="jelos")
+	private List<Porudzbina> porudzbinas;
 
 	public Jelo() {
 	}
@@ -115,26 +115,12 @@ public class Jelo implements Serializable {
 		return komentar;
 	}
 
-	public List<Stavka> getStavkas() {
-		return this.stavkas;
+	public List<Porudzbina> getPorudzbinas() {
+		return this.porudzbinas;
 	}
 
-	public void setStavkas(List<Stavka> stavkas) {
-		this.stavkas = stavkas;
-	}
-
-	public Stavka addStavka(Stavka stavka) {
-		getStavkas().add(stavka);
-		stavka.setJelo(this);
-
-		return stavka;
-	}
-
-	public Stavka removeStavka(Stavka stavka) {
-		getStavkas().remove(stavka);
-		stavka.setJelo(null);
-
-		return stavka;
+	public void setPorudzbinas(List<Porudzbina> porudzbinas) {
+		this.porudzbinas = porudzbinas;
 	}
 
 }

@@ -18,10 +18,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.projekat.repository.JelaRepository;
 import com.projekat.repository.KategorijaRepositorty;
+import com.projekat.repository.KorisnikRepository;
 import com.projekat.repository.KuhinjaRepository;
+import com.projekat.repository.PorudzbinaRepository;
 
 import model.Jelo;
 import model.Kategorija;
+import model.Korisnik;
 import model.Kuhinja;
 import model.Porudzbina;
 
@@ -38,6 +41,12 @@ public class KorisnikController {
 	
 	@Autowired
 	KuhinjaRepository ku;
+	
+	@Autowired
+	PorudzbinaRepository pr;
+	
+	@Autowired
+	KorisnikRepository ksr;
 	
 	@RequestMapping(value = "/pozoviStranicuJelo", method = RequestMethod.GET)
 	public String otvoriJela(HttpServletRequest request) {
@@ -83,6 +92,9 @@ public class KorisnikController {
 			listaJela.add(j);
 		}
 		
+		
+		
+		
 		int cena = listaJela.stream().collect(Collectors.summingInt(Jelo::getCena));
 		
 		request.getSession().setAttribute("listaJela", listaJela);
@@ -91,7 +103,8 @@ public class KorisnikController {
 	}
 	
 	@RequestMapping(value = "/poruci", method = RequestMethod.POST)
-	public String poruci(HttpServletRequest request,String adresa,Date datum) {
+	public String poruci(HttpServletRequest request,String adresa,Date datum,String nazivPorudzbine) {
+		
 		
 		Integer cena =(Integer) request.getSession().getAttribute("cena");
 		
@@ -99,6 +112,21 @@ public class KorisnikController {
 		p.setAdresaPorudzbine(adresa);
 		p.setDatum(datum);
 		p.setUkupnaCena(cena);
+		p.setNazivPorudzbine(nazivPorudzbine);
+		p.setStatus(null);
+		
+		Korisnik k = ksr.findById(3).get();
+		p.setKorisnik1(k);
+		
+		Korisnik k1 = ksr.findById(2).get();
+		p.setKorisnik2(k1);
+		
+		List<Jelo> jelca = (List<Jelo>)request.getSession().getAttribute("listaJela");
+		p.setJelos(jelca);
+		
+		Porudzbina poruci = pr.save(p);
+		request.getSession().setAttribute("poruci", poruci);
+		
 		
 		return "poruka";
 	}
@@ -109,4 +137,6 @@ public class KorisnikController {
 	    sdf.setLenient(true);
 	    binder.registerCustomEditor(Date.class, new CustomDateEditor(sdf, true));
 	}
+	
+	
 }

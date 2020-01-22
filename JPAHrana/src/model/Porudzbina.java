@@ -3,6 +3,7 @@ package model;
 import java.io.Serializable;
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 
 /**
@@ -27,10 +28,20 @@ public class Porudzbina implements Serializable {
 
 	private String status;
 
-	@Column(name="Stavka_idStavka")
-	private int stavka_idStavka;
-
 	private int ukupnaCena;
+
+	//bi-directional many-to-many association to Jelo
+	@ManyToMany
+	@JoinTable(
+		name="Stavka"
+		, joinColumns={
+			@JoinColumn(name="Porudzbina_idPorudzbina")
+			}
+		, inverseJoinColumns={
+			@JoinColumn(name="Jelo_idJelo")
+			}
+		)
+	private List<Jelo> jelos;
 
 	//bi-directional many-to-one association to Korisnik
 	@ManyToOne
@@ -41,11 +52,6 @@ public class Porudzbina implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="Korisnik_idKorisnikRadnik")
 	private Korisnik korisnik2;
-
-	//bi-directional many-to-one association to Stavka
-	@ManyToOne
-	@JoinColumn(name="Stavka_idStavka1")
-	private Stavka stavka;
 
 	public Porudzbina() {
 	}
@@ -90,20 +96,20 @@ public class Porudzbina implements Serializable {
 		this.status = status;
 	}
 
-	public int getStavka_idStavka() {
-		return this.stavka_idStavka;
-	}
-
-	public void setStavka_idStavka(int stavka_idStavka) {
-		this.stavka_idStavka = stavka_idStavka;
-	}
-
 	public int getUkupnaCena() {
 		return this.ukupnaCena;
 	}
 
 	public void setUkupnaCena(int ukupnaCena) {
 		this.ukupnaCena = ukupnaCena;
+	}
+
+	public List<Jelo> getJelos() {
+		return this.jelos;
+	}
+
+	public void setJelos(List<Jelo> jelos) {
+		this.jelos = jelos;
 	}
 
 	public Korisnik getKorisnik1() {
@@ -120,14 +126,6 @@ public class Porudzbina implements Serializable {
 
 	public void setKorisnik2(Korisnik korisnik2) {
 		this.korisnik2 = korisnik2;
-	}
-
-	public Stavka getStavka() {
-		return this.stavka;
-	}
-
-	public void setStavka(Stavka stavka) {
-		this.stavka = stavka;
 	}
 
 }

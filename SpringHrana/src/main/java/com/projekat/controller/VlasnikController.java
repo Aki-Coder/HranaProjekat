@@ -48,20 +48,20 @@ public class VlasnikController {
 		
 		
 		
-		Kuhinja k;
-		if(kuhinje == null) {
+		Kuhinja k = null;
+		if(kuhinje.isEmpty()) {
 			k = new Kuhinja();
 			k.setVrstaKuhinje(kuhinjaJ);
-			kuh.save(k);
+			k = kuh.save(k);
 		}else {
 			k = kuhinje.get(0);
 		}
 		
-		Kategorija ku;
+		Kategorija ku = null;
 		if(kategorije.isEmpty()) {
 			ku = new Kategorija();
 			ku.setVrstaKategorije(kategorijaJ);
-			kr.save(ku);
+			ku = kr.save(ku);
 		}else {
 			ku = kategorije.get(0);
 		}

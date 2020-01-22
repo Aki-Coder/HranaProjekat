@@ -21,6 +21,8 @@
 		<p>Ukupna cena narudžbine:</p>
 		<c:out value="${cena }"></c:out>
 		<br>
+		Unesite naziv porudzbine: <input type = "text" name="nazivPorudzbine">
+		
 		<br> Unesite adresu za isporuku: <input type="text" name="adresa"
 			maxlength="50">
 		<br>
