@@ -18,12 +18,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.projekat.repository.JelaRepository;
 import com.projekat.repository.KategorijaRepositorty;
+import com.projekat.repository.KomentarRepository;
 import com.projekat.repository.KorisnikRepository;
 import com.projekat.repository.KuhinjaRepository;
 import com.projekat.repository.PorudzbinaRepository;
 
 import model.Jelo;
 import model.Kategorija;
+import model.Komentar;
 import model.Korisnik;
 import model.Kuhinja;
 import model.Porudzbina;
@@ -47,6 +49,9 @@ public class KorisnikController {
 	
 	@Autowired
 	KorisnikRepository ksr;
+	
+	@Autowired
+	KomentarRepository komr;
 	
 	@RequestMapping(value = "/pozoviStranicuJelo", method = RequestMethod.GET)
 	public String otvoriJela(HttpServletRequest request) {
@@ -136,6 +141,33 @@ public class KorisnikController {
 	    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 	    sdf.setLenient(true);
 	    binder.registerCustomEditor(Date.class, new CustomDateEditor(sdf, true));
+	}
+	
+	@RequestMapping(value = "/komentar", method = RequestMethod.GET)
+	public String komentar(HttpServletRequest request,Integer id) {
+		
+		Jelo j = jr.findById(id).get();
+		request.getSession().setAttribute("j", j);
+		
+		
+		return "komentar";
+	}
+	
+	@RequestMapping(value = "/ostaviKomentar", method = RequestMethod.POST)
+	public String ostaviKomentar(HttpServletRequest request,Date datum,String komm) {
+		Jelo j = (Jelo) request.getSession().getAttribute("j");
+		
+		Korisnik korisnik = ksr.findById(3).get();
+		
+		
+		Komentar k = new Komentar();
+		k.setDatum(datum);
+		k.setJelo(j);
+		k.setKorisnik(korisnik);
+		k.setKomentar(komm);
+		
+		Komentar komentar = komr.save(k);
+		return "komentar";
 	}
 	
 	

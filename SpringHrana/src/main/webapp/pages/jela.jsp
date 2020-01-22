@@ -51,7 +51,8 @@
 				<th>Naziv jela</th>
 				<th>Detalji o jelu</th>
 				<th>Cena jela</th>
-				<th>Naruci</th>
+				<th>Ostavi komentar</th>
+				<th>Naruči</th>
 			</tr>
 
 			<c:forEach var="j" items="${jela }">
@@ -59,6 +60,9 @@
 					<td>${j.naziv }</td>
 					<td>${j.detalji }</td>
 					<td>${j.cena }</td>
+					<td>
+						<a href = "/Projekat/korisnikController/komentar?id=${j.idJelo }">Ostavi komentar za jelo</a>
+					</td>
 					<td>
 						<input type="checkbox" name="checkBox"  value = "${j.idJelo }">
 					</td>
