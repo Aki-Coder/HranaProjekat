@@ -9,7 +9,8 @@
 <body>
 
 	<a href="/Projekat/korisnikController/pozoviStranicuJelo">Prikaz jela</a><br>
-	<a href="/Projekat/pages/unosJela.jsp">Unos novog jela</a>
+	<a href="/Projekat/pages/unosJela.jsp">Unos novog jela</a><br>
+	<a href="/Projekat/pages/pregledKomentara.jsp">Pogledajte komentare za jela - vlasnik</a>
 	
 </body>
 </html>
