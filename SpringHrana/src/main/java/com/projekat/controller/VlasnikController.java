@@ -1,6 +1,7 @@
 package com.projekat.controller;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -81,18 +82,26 @@ public class VlasnikController {
 	@RequestMapping(value = "/pregledKomm",method = RequestMethod.GET)
 	public String pogledajKomentar(HttpServletRequest request,String nazivJela) {
 		
-//		String k [] = request.getParameterValues("checkBox");
-//		
-//		List<Komentar> listaKomentara = new ArrayList<>();
-//		for (String komm : k) {
-//			Komentar komentar = komr.findById(Integer.parseInt(komm)).get();
-//			listaKomentara.add(komentar);
-//		}
+		
 		
 		List<Komentar> komentari = komr.findByKomentariZaJelo(nazivJela);
 		
 		request.getSession().setAttribute("komentari", komentari);
-		//request.getSession().setAttribute("listaKomentara", listaKomentara);
+		
+		return "pregledKomentara";
+	}
+	
+	@RequestMapping(value = "/brisiKomentare", method = RequestMethod.GET)
+	public String brisiKomentare(HttpServletRequest request) {
+		
+		String k [] = request.getParameterValues("checkBox");
+			
+		Arrays.stream(k)
+		      .map(Integer::parseInt)
+		      .map(kom -> komr.findById(kom).get())
+		      .forEach(kom1 -> komr.delete(kom1));
+		
+		request.getSession().setAttribute("obrisano", true);
 		return "pregledKomentara";
 	}
 }

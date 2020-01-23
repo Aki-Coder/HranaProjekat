@@ -13,7 +13,9 @@
 		<input type="submit" value = "Prikazi komentare">
 	</form>
 	
-	<c:if test="${!empty komentari}">
+	
+	<form action="/Projekat/vlasnikController/brisiKomentare" method="get">
+		<c:if test="${!empty komentari}">
 	<p>Komentari za jelo :${k.jelo.naziv}</p>
 		<table border="1">
 		<tr>
@@ -26,17 +28,24 @@
 				<td>${k.datum }</td>
 				<td>${k.komentar }</td>
 				<td>
-					<input type="checkbox" name="checkBox"  value = "${k.idKomentar }">
+					<input type="checkbox" name="checkBox"  value = "${k.idKomentar}">
 				</td>
 			</tr>
 		</c:forEach>
+		
 			
 		</table>
+		
+		<input type="submit" value="Obrisi komentar/e">
 	<c:if test="${empty komentari }">
 		Za izabrano jelo ne postoje komentari.
 	</c:if>
 	</c:if>
+	</form>
 	
+	<c:if test="${obrisano}">
+		<h3>Obrisani su komentari</h3>
+	</c:if>
 	
 </body>
 </html>
