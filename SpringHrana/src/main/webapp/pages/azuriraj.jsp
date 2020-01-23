@@ -12,12 +12,12 @@
 		
 		<form action="/Projekat/vlasnikController/unosJelaAzuriraj" method="get">
 			Unesite naziv jela: <input type="text" name = "nazivJ"><br>
-			<input type="submit" value = "Prikazi jelo">
+			<input type="submit" value = "Prikazi jelo"><br>
 		</form>
 		
 		<c:if test="${!empty jela }">
 		<form action="/Projekat/vlasnikController/azurirajCenu" method="post">
-			${jela.naziv}<br>
+			${jela.naziv} i cena ${jela.cena}<br>
 			Unesite novu cenu jela: <input type="text" name = "cena"><br>
 			<input type="submit" value = "Azuriraj">
 		</form>
@@ -25,7 +25,11 @@
 		</c:if>
 		
 		<c:if test="${empty jela }">
-			Uneto jelo ne postoji u bazi.
+			Uneto jelo ne postoji u restoranu.
+		</c:if>
+		
+		<c:if test="${!empty jelo }">
+			Cena jela je uspeso azurirana.
 		</c:if>
 	
 </body>

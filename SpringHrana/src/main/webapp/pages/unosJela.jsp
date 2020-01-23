@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="style.css">
 <title>Unos jela</title>
 </head>
 <body>
@@ -13,7 +14,7 @@
 		
 		Unesite naziv jela : <input type="text" name = "nazivJ"><br>
 		Unesite detalje za jelo : <input type="text" name = "detaljiJ"><br>
-		Unesite cenu za jelo : <input type="number" name = "cenaJ"><br>
+		Unesite cenu za jelo : <input type="number" min = 0 name = "cenaJ"><br>
 		Unesite kuhinju kojoj jelo pripada :<input type="text" name = "kuhinjaJ"><br>
 		Unesite kategoriju za jelo : <input type="text" name = "kategorijaJ"><br>
 		<input type="submit" value = "Unesite novo jelo"><br>
