@@ -10,7 +10,7 @@ import model.Komentar;
 
 public interface KomentarRepository extends JpaRepository<Komentar, Integer> {
 
-	@Query("select k from Komentar k where k.komentar like :nazivJela")
+	@Query("select k from Komentar k where k.komentar.jelo.naziv like :nazivJela")
 	public List<Komentar> findByKomentariZaJelo(@Param("nazivJela") String naziv);
 	//List<Komentar> findByJelo(String naziv);
 }
