@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="/Projekat/css/style.css">
 <title>Jela iz restorana</title>
 
 </head>
@@ -46,7 +47,7 @@
 	
 	<c:if test="${!empty jela }">
 	<form action="/Projekat/korisnikController/naruciJelo" method="get">
-		<table border="1">
+		<table id = "tabela1" border="1">
 			<tr>
 				<th>Naziv jela</th>
 				<th>Detalji o jelu</th>

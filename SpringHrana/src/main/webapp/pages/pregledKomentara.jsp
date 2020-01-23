@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="/Projekat/css/style.css">
 <title>Pregled komentara</title>
 </head>
 <body>
@@ -17,7 +18,7 @@
 	<form action="/Projekat/vlasnikController/brisiKomentare" method="get">
 		<c:if test="${!empty komentari}">
 	<p>Komentari za jelo :${k.jelo.naziv}</p>
-		<table border="1">
+		<table id = "tabela1" border="1">
 		<tr>
 			<th>Datum</th>
 			<th>Komentari za jelo</th>
