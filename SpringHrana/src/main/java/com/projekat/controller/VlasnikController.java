@@ -104,4 +104,28 @@ public class VlasnikController {
 		request.getSession().setAttribute("obrisano", true);
 		return "pregledKomentara";
 	}
+	
+	@RequestMapping(value = "/unosJelaAzuriraj", method = RequestMethod.GET)
+	public String azuriraj(HttpServletRequest request,String nazivJ) {
+		Jelo j = jr.findByNazivJela(nazivJ);
+	
+		
+		request.getSession().setAttribute("jela", j);
+		return "azuriraj";
+	}
+	
+	@RequestMapping(value = "/azurirajCenu", method = RequestMethod.POST)
+	public String azurirajCenu(HttpServletRequest request,String cena) {
+		Integer c = Integer.parseInt(cena);
+		
+		Jelo jelo = (Jelo) request.getSession().getAttribute("jela");
+		
+		jelo.setCena(c);
+		
+		jr.save(jelo);
+		request.getSession().setAttribute("jelo", jelo);
+		
+		
+		return "azuriraj";
+	}
 }

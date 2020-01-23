@@ -19,4 +19,7 @@ public interface JelaRepository extends JpaRepository<Jelo, Integer>{
 	@Query("select j from Jelo j where j.kategorija.idKategorija like :idK and j.kuhinja.idKuhinja like :idKuh")
 	public List<Jelo> findByKiK(@Param("idK") Integer idK, @Param("idKuh") Integer idKuh);
 	
+	@Query("select j from Jelo j where j.naziv like :nazivJ")
+	public Jelo findByNazivJela(@Param("nazivJ") String nazivJ);
+	
 }
