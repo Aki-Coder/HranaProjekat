@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="/Projekat/css/style.css">
+<link rel="stylesheet" type="text/css" href="/Projekat/css/style1.css">
 <title>Web portal za dostavu hrane</title>
 </head>
 <body>
@@ -26,9 +27,16 @@
     <p class="p">
   
       Sve više ljudi, zbog ubrzanog načina života i nedostatka vremena da sprema hranu se odlučuje da hranu naruči na kućnu adresu. 
-      Pogledajte ponudu jela iz našeg restorana,isprobajte kuhinje raznolikih zemalja i prepustite se slatko,slano.ljuto,kiselim 
+      Pogledajte ponudu jela iz našeg restorana,isprobajte kuhinje raznolikih zemalja i prepustite se slatko,slano,ljuto,kiselim 
       ukusima.
       </p>
+  </div>
+  
+  <br>
+    <div class="footer">
+	    <p>Nađite nas i na društvenim mrežama</p>
+	    <script src="https://apps.elfsight.com/p/platform.js" defer></script>
+	    <div class="elfsight-app-2f8e0368-d3be-4b58-a316-c06c2f872837"></div>
   </div>
  
 

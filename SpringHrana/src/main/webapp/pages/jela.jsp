@@ -71,7 +71,7 @@
 			</c:forEach>
 		</table><br>
 		
-		<input type="submit" value="Naruci odabrana jela">
+		<input type="submit" value="Naruči odabrana jela">
 		</form>
 	</c:if>
 	
