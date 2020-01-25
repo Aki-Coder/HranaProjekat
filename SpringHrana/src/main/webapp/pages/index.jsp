@@ -19,7 +19,13 @@
 		<a href="/Projekat/pages/unosJela.jsp">Unos novog jela</a>
 		<a href="/Projekat/pages/pregledKomentara.jsp">Komentari</a>
 		<a href ="/Projekat/pages/azuriraj.jsp">Ažuriraj cenu jela </a>
+		<a href="/Projekat/vlasnikController/prikaziNarudzbine">Narudžbine</a>
 	</sec:authorize>
+	<form action="/Projekat/logout" method="post">
+		<input type="submit" value="Odjavi se">
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+	</form>
+	
 </div>
 
   <div>

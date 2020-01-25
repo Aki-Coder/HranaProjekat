@@ -1,6 +1,5 @@
 package com.projekat.controller;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -14,12 +13,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.projekat.repository.JelaRepository;
 import com.projekat.repository.KategorijaRepositorty;
 import com.projekat.repository.KomentarRepository;
+import com.projekat.repository.KorisnikRepository;
 import com.projekat.repository.KuhinjaRepository;
+import com.projekat.repository.PorudzbinaRepository;
 
 import model.Jelo;
 import model.Kategorija;
 import model.Komentar;
+import model.Korisnik;
 import model.Kuhinja;
+import model.Porudzbina;
 
 @Controller
 @RequestMapping(value = "/vlasnikController")
@@ -38,6 +41,14 @@ public class VlasnikController {
 	
 	@Autowired
 	KomentarRepository komr;
+	
+	@Autowired
+	PorudzbinaRepository pr;
+	
+	@Autowired
+	KorisnikRepository korr;
+	
+
 
 	@RequestMapping(value = "/unosJela", method = RequestMethod.POST)
 	public String unesiJelo(HttpServletRequest request,String nazivJ,String detaljiJ,Integer cenaJ,String kuhinjaJ,String kategorijaJ) {
@@ -128,4 +139,31 @@ public class VlasnikController {
 		
 		return "azuriraj";
 	}
+	
+	@RequestMapping(value = "/prikaziNarudzbine", method = RequestMethod.GET)
+	public String dodeliRadnike(HttpServletRequest request) {
+		
+		
+		List<Korisnik> radnici = korr.findByUloga("radnik");
+		List<Porudzbina> p =  pr.findByStatus("neisporucena");
+		
+		request.getSession().setAttribute("radnici", radnici);
+		request.getSession().setAttribute("porudzbine", p);
+		
+		return "narudzbine";
+	}
+	
+	@RequestMapping(value = "/isporuci", method = RequestMethod.POST)
+	public String isporuci(HttpServletRequest request, String por, String radnik) {
+		Porudzbina poruzdbina = pr.findById(Integer.parseInt(por)).get();
+		Korisnik korisnik = korr.findById(Integer.parseInt(radnik)).get();
+		
+		poruzdbina.setStatus("isporuceno");
+		poruzdbina.setKorisnik2(korisnik);
+		
+		pr.save(poruzdbina);
+		return dodeliRadnike(request);
+	}
+	
+
 }

@@ -118,7 +118,7 @@ public class KorisnikController {
 		p.setDatum(datum);
 		p.setUkupnaCena(cena);
 		p.setNazivPorudzbine(nazivPorudzbine);
-		p.setStatus(null);
+		p.setStatus("neisporucena");
 		
 		Korisnik k = ksr.findById(3).get();
 		p.setKorisnik1(k);

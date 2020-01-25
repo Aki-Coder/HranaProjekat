@@ -41,6 +41,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	   loginPage("/pages/login.jsp").
 	   loginProcessingUrl("/login").
 	   defaultSuccessUrl("/pages/index.jsp").and().
+	   logout().invalidateHttpSession(true).logoutSuccessUrl("/pages/login.jsp").and().
 	   exceptionHandling().accessDeniedPage("/pages/dozvole.jsp").
 	   and().rememberMe().
 	   and().csrf();
