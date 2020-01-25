@@ -1,5 +1,7 @@
 package com.projekat.security;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -14,6 +16,9 @@ import model.Korisnik;
 public class UserDetailProvider implements UserDetailsService {
 	@Autowired
 	KorisnikRepository kr;
+	
+	@Autowired
+	HttpServletRequest sr;
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -23,7 +28,8 @@ public class UserDetailProvider implements UserDetailsService {
 			ud.setKorisnickoIme(k.getUsername());
 			ud.setSifra(k.getPassword());
 			ud.setU(k.getUloga());
-
+			
+			sr.getSession().setAttribute("korisnik", k);
 			return ud;
 		}
 		

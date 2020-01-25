@@ -120,12 +120,13 @@ public class KorisnikController {
 		p.setNazivPorudzbine(nazivPorudzbine);
 		p.setStatus("neisporucena");
 		
-		Korisnik k = ksr.findById(3).get();
+		Korisnik k = (Korisnik) request.getSession().getAttribute("korisnik");
 		p.setKorisnik1(k);
+		p.setKorisnik2(null);
+//		Korisnik k1 = ksr.findById(2).get();
+//		p.setKorisnik2(k1);
 		
-		Korisnik k1 = ksr.findById(2).get();
-		p.setKorisnik2(k1);
-		
+		@SuppressWarnings("unchecked")
 		List<Jelo> jelca = (List<Jelo>)request.getSession().getAttribute("listaJela");
 		p.setJelos(jelca);
 		
