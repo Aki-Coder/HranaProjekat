@@ -28,6 +28,8 @@
 			maxlength="50">
 		<br>
 		Datum isporuke: <input type="date" name = "datum">
+		<input type="hidden" name="${_csrf.parameterName}"
+					value="${_csrf.token}" />
 		<input type="submit" value = "Poruci">
 	</form>
 

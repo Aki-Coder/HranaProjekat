@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,14 +12,18 @@
 <body>
 
 <div class="navigacionibar">
-	<a href="/Projekat/korisnikController/pozoviStranicuJelo">Prikaz jela</a>
-	<a href="/Projekat/pages/unosJela.jsp">Unos novog jela</a>
-	<a href="/Projekat/pages/pregledKomentara.jsp">Pogledajte komentare za jela - vlasnik</a>
-	<a href ="/Projekat/pages/azuriraj.jsp">Azuriraj cenu jela - vlasnik</a>
+	<sec:authorize access="hasRole('korisnik')">
+		<a href="/Projekat/korisnikController/pozoviStranicuJelo">Prikaz jela</a>
+	</sec:authorize>
+	<sec:authorize access="hasRole('vlasnik')">
+		<a href="/Projekat/pages/unosJela.jsp">Unos novog jela</a>
+		<a href="/Projekat/pages/pregledKomentara.jsp">Komentari</a>
+		<a href ="/Projekat/pages/azuriraj.jsp">Ažuriraj cenu jela </a>
+	</sec:authorize>
 </div>
 
   <div>
-    <img src="slike/222.jpg" width="100%" height="650px">
+    <img src="/Projekat/slike/222.jpg" width="100%" height="650px">
   </div>
 
  <h2 class="okvir">O aplikaciji</h2>

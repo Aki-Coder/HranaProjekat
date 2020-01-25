@@ -17,6 +17,8 @@
 		Unesite cenu za jelo : <input type="number" min = 0 name = "cenaJ"><br>
 		Unesite kuhinju kojoj jelo pripada :<input type="text" name = "kuhinjaJ"><br>
 		Unesite kategoriju za jelo : <input type="text" name = "kategorijaJ"><br>
+		<input type="hidden" name="${_csrf.parameterName}"
+					value="${_csrf.token}" />
 		<input type="submit" value = "Unesite novo jelo"><br>
 	</form>
 	

@@ -37,6 +37,8 @@
 			
 		</table>
 		
+		<input type="hidden" name="${_csrf.parameterName}"
+					value="${_csrf.token}" />
 		<input type="submit" value="Obrisi komentar/e">
 	<c:if test="${empty komentari }">
 		Za izabrano jelo ne postoje komentari.

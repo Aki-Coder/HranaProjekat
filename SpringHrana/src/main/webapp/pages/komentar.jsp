@@ -14,6 +14,8 @@
 	<legend>Komentari</legend>
 		Unesite komentar za odabrano jelo:<textarea name="komm" cols="50" rows="4">Primedbe,sugestije,pohvale</textarea><br><br>
 		Datum unosenja komentara : <input type="date" name = "datum"><br>
+		<input type="hidden" name="${_csrf.parameterName}"
+					value="${_csrf.token}" />
 		<input type="submit" value = "Ostavi komentar">
 	 </fieldset>
 	</form>

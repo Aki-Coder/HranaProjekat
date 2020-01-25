@@ -70,7 +70,8 @@
 				</tr>
 			</c:forEach>
 		</table><br>
-		
+		<input type="hidden" name="${_csrf.parameterName}"
+					value="${_csrf.token}" />
 		<input type="submit" value="Naruči odabrana jela">
 		</form>
 	</c:if>
