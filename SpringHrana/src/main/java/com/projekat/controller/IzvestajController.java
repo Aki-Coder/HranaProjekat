@@ -4,8 +4,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/radnikController")
-
-public class RadnikController {
-
+@RequestMapping(value = "/reports")
+public class IzvestajController {
+	
+	
 }
