@@ -9,6 +9,8 @@
 <title>Pregled komentara</title>
 </head>
 <body>
+	<%@include file="navbar.jsp" %><br><br><br><br><br><br>
+
 	<form action="/Projekat/vlasnikController/pregledKomm" method="get">
 		Unesite naziv jela za koji zelite da vidite pregled komentara : <input type="text" name = "nazivJela"><br>
 		<input type="submit" value = "Prikazi komentare">

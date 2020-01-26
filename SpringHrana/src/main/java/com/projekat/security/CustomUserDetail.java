@@ -19,7 +19,6 @@ public class CustomUserDetail implements UserDetails {
 	private Uloga u;
 	
 	
-
 	
 	public void setKorisnickoIme(String korisnickoIme) {
 		this.korisnickoIme = korisnickoIme;

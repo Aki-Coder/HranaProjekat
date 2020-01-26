@@ -11,23 +11,7 @@
 </head>
 <body>
 
-<div class="navigacionibar">
-	<sec:authorize access="hasRole('korisnik')">
-		<a href="/Projekat/korisnikController/pozoviStranicuJelo">Prikaz jela</a>
-	</sec:authorize>
-	<sec:authorize access="hasRole('vlasnik')">
-		<a href="/Projekat/pages/unosJela.jsp">Unos novog jela</a>
-		<a href="/Projekat/pages/pregledKomentara.jsp">Komentari</a>
-		<a href ="/Projekat/pages/azuriraj.jsp">Ažuriraj cenu jela </a>
-		<a href="/Projekat/vlasnikController/prikaziNarudzbine">Narudžbine</a>
-		<a href = "/Projekat/reports/izvestaj.jsp">Izveštaji</a>
-	</sec:authorize>
-	<form action="/Projekat/logout" method="post">
-		<input type="submit" value="Odjavi se">
-		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-	</form>
-	
-</div>
+<%@include file="navbar.jsp" %><br><br><br><br>
 
   <div>
     <img src="/Projekat/slike/222.jpg" width="100%" height="650px">

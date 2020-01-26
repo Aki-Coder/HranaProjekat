@@ -10,6 +10,7 @@
 </head>
 <body>
 
+	<%@include file="navbar.jsp" %><br><br><br><br><br><br>
 		
 		<form action="/Projekat/vlasnikController/unosJelaAzuriraj" method="get">
 			Unesite naziv jela: <input type="text" name = "nazivJ"><br>
@@ -20,6 +21,7 @@
 		<form action="/Projekat/vlasnikController/azurirajCenu" method="post">
 			${jela.naziv} i cena ${jela.cena}<br>
 			Unesite novu cenu jela: <input type="text" name = "cena"><br>
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 			<input type="submit" value = "Azuriraj">
 		</form>
 		

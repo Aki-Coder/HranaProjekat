@@ -9,6 +9,8 @@
 <title>Komentar</title>
 </head>
 <body>
+	<%@include file="navbar.jsp" %><br><br><br><br><br><br>
+
 	<form action="/Projekat/korisnikController/ostaviKomentar" method="post">
 	<fieldset class="fieldset2">
 	<legend>Komentari</legend>

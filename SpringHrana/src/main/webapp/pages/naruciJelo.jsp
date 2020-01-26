@@ -10,6 +10,8 @@
 </head>
 <body>
 
+	<%@include file="navbar.jsp" %><br><br><br><br><br><br>
+
 	<p>Odabrana jela za porudžbinu:</p>
 	<form action="/Projekat/korisnikController/poruci" method="post">
 		<c:if test="${!empty listaJela && !empty cena}">

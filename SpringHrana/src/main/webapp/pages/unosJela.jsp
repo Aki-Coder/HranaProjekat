@@ -9,6 +9,8 @@
 <title>Unos jela</title>
 </head>
 <body>
+
+	<%@include file="navbar.jsp" %><br><br><br><br><br><br>
 	
 	<form action="/Projekat/vlasnikController/unosJela" method="post">
 		

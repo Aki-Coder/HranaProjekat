@@ -8,6 +8,6 @@
 <title>Izvestaj</title>
 </head>
 <body>
-
+	<%@include file="navbar.jsp" %><br><br><br><br><br><br>
 </body>
 </html>
