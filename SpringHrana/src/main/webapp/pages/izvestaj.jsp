@@ -9,5 +9,9 @@
 </head>
 <body>
 	<%@include file="navbar.jsp" %><br><br><br><br><br><br>
+	
+	<form action="/Projekat/izvestajController/getPdf" method="get">
+		
+	</form>
 </body>
 </html>

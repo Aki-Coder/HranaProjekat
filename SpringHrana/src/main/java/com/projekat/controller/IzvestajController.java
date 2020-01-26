@@ -1,30 +1,67 @@
 package com.projekat.controller;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import model.Porudzbina;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 
 @Controller
-@RequestMapping(value = "/reports")
+@RequestMapping(value = "/izvestajController")
 public class IzvestajController {
 	
-	public static void main(String[] args) {
-		 
-        Date now = new Date();
- 
-       SimpleDateFormat simpleDateformat = new SimpleDateFormat("E"); // the day of the week abbreviated
-       //System.out.println(simpleDateformat.format(now));
- 
-        simpleDateformat = new SimpleDateFormat("EEEE"); // the day of the week spelled out completely
-        System.out.println(simpleDateformat.format(now));
- 
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(now);
-        System.out.println(calendar.get(Calendar.DAY_OF_WEEK)); // the day of the week in numerical format
- 
-    }
+//	public static void main(String[] args) {
+//		 
+//        Date now = new Date();
+// 
+//       SimpleDateFormat simpleDateformat = new SimpleDateFormat("E"); // the day of the week abbreviated
+//       //System.out.println(simpleDateformat.format(now));
+// 
+//        simpleDateformat = new SimpleDateFormat("EEEE"); // the day of the week spelled out completely
+//        System.out.println(simpleDateformat.format(now));
+// 
+//        Calendar calendar = Calendar.getInstance();
+//        calendar.setTime(now);
+//        System.out.println(calendar.get(Calendar.DAY_OF_WEEK)); // the day of the week in numerical format
+// 
+//    }
+	
+	@RequestMapping(value = "/getPdf.pdf", method = RequestMethod.GET)
+	public void generisiIzvestaj(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		@SuppressWarnings("unchecked")
+		List<Porudzbina> predstave = (List<Porudzbina>) request.getSession().getAttribute("porudzbine");
+
+		response.setContentType("text/html");
+		JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(predstave);
+		InputStream inputStream = this.getClass().getResourceAsStream("/reports/HranaIzvestaj.jrxml");
+		JasperReport jasperReport = JasperCompileManager.compileReport(inputStream);
+		Map<String, Object> params = new HashMap<String, Object>();
+		//String reziser = "";
+		//reziser = predstave.get(0).getReziser().getIme() + " " + predstave.get(0).getReziser().getPrezime();
+//		if (predstave != null && predstave.size() > 0)
+//			params.put("reziser", reziser);
+		JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, params, dataSource);
+		inputStream.close();
+
+		response.setContentType("application/x-download");
+		response.addHeader("Content-disposition", "attachment; filename=HranaIzvestaj.pdf");
+		OutputStream out = response.getOutputStream();
+		JasperExportManager.exportReportToPdfStream(jasperPrint, out);
+	}
 }
 

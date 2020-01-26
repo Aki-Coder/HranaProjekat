@@ -18,7 +18,7 @@
 		<a href="/Projekat/pages/pregledKomentara.jsp">Komentari</a>
 		<a href ="/Projekat/pages/azuriraj.jsp">Ažuriraj cenu jela </a>
 		<a href="/Projekat/vlasnikController/prikaziNarudzbine">Narudžbine</a>
-		<a href = "/Projekat/reports/izvestaj.jsp">Izveštaji</a>
+		<a href = "/Projekat/pages/izvestaj.jsp">Izveštaji</a>
 	</sec:authorize>
 	<form action="/Projekat/logout" method="post">
 		<input type="submit" value="Odjavi se">
