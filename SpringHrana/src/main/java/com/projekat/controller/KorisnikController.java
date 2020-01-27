@@ -88,7 +88,7 @@ public class KorisnikController {
 	}
 	
 	@RequestMapping(value = "/naruciJelo", method = RequestMethod.GET)
-	public String naruciJelo(HttpServletRequest request ) {
+	public String naruciJelo(HttpServletRequest request) {
 		String jela [] = request.getParameterValues("checkBox");
 		
 		List<Jelo> listaJela = new ArrayList<>();
@@ -97,11 +97,11 @@ public class KorisnikController {
 			listaJela.add(j);
 		}
 		
-		
-		
-		
+	
 		int cena = listaJela.stream().collect(Collectors.summingInt(Jelo::getCena));
 		
+		
+	
 		request.getSession().setAttribute("listaJela", listaJela);
 		request.getSession().setAttribute("cena", cena);
 		return "naruciJelo";
@@ -118,6 +118,7 @@ public class KorisnikController {
 		p.setDatum(datum);
 		p.setUkupnaCena(cena);
 		p.setNazivPorudzbine(nazivPorudzbine);
+		
 		p.setStatus("neisporucena");
 		
 		Korisnik k = (Korisnik) request.getSession().getAttribute("korisnik");

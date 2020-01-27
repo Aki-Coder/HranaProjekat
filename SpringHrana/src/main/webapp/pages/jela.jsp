@@ -64,6 +64,7 @@
 					<td>
 						<a href = "/Projekat/korisnikController/komentar?id=${j.idJelo }">Ostavi komentar za jelo</a>
 					</td>
+					
 					<td>
 						<input type="checkbox" name="checkBox"  value = "${j.idJelo }">
 					</td>

@@ -10,8 +10,10 @@
 <body>
 	<%@include file="navbar.jsp" %><br><br><br><br><br><br>
 	
-	<form action="/Projekat/izvestajController/getPdf" method="get">
-		
+	<form action="/Projekat/izvestajController/datum" method="get">
+		Izaberite pocetni datum : <input type="date" name = "pocetniD"><br>
+		Izaberite zavrsni datum : <input type="date" name = "zavrsniD"><br>
+		<input type="submit" value = "Generisi izvestaj">
 	</form>
 </body>
 </html>

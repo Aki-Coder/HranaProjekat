@@ -53,8 +53,6 @@ public class VlasnikController {
 	@RequestMapping(value = "/unosJela", method = RequestMethod.POST)
 	public String unesiJelo(HttpServletRequest request,String nazivJ,String detaljiJ,Integer cenaJ,String kuhinjaJ,String kategorijaJ) {
 		
-
-		
 		Jelo j = new Jelo();
 		j.setNaziv(nazivJ);
 		j.setDetalji(detaljiJ);
