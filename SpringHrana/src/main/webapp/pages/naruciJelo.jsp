@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="/Projekat/css/style.css">
+<link rel="stylesheet" type="text/css" href="/Projekat/css/style2.css">
 <title>Narudzbina</title>
 </head>
 <body>
@@ -32,7 +33,7 @@
 		Datum isporuke: <input type="date" name = "datum">
 		<input type="hidden" name="${_csrf.parameterName}"
 					value="${_csrf.token}" />
-		<input type="submit" value = "Poruci">
+		<input class = "dugme" type="submit" value = "Poruči">
 	</form>
 
 </body>

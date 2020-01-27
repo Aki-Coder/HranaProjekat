@@ -3,6 +3,7 @@ package com.projekat.controller;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -32,35 +33,18 @@ import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 @Controller
 @RequestMapping(value = "/izvestajController")
 public class IzvestajController {
-	
+
 	@Autowired
 	PorudzbinaRepository pr;
-	
+
 	@Autowired
 	HttpServletRequest request;
-	
+
 	@Autowired
 	HttpServletResponse response;
-	
-//	public static void main(String[] args) {
-//		 
-//        Date now = new Date();
-// 
-//       SimpleDateFormat simpleDateformat = new SimpleDateFormat("E"); // the day of the week abbreviated
-//       //System.out.println(simpleDateformat.format(now));
-// 
-//        simpleDateformat = new SimpleDateFormat("EEEE"); // the day of the week spelled out completely
-//        System.out.println(simpleDateformat.format(now));
-// 
-//        Calendar calendar = Calendar.getInstance();
-//        calendar.setTime(now);
-//        System.out.println(calendar.get(Calendar.DAY_OF_WEEK)); // the day of the week in numerical format
-// 
-//    }
-	
-	@RequestMapping(value = "/getPdf.pdf", method = RequestMethod.GET)
+
+	@RequestMapping(value = "/getPdf", method = RequestMethod.GET)
 	public void generisiIzvestaj(List<Porudzbina> lista) throws Exception {
-		
 
 		try {
 			response.setContentType("text/html");
@@ -68,14 +52,12 @@ public class IzvestajController {
 			InputStream inputStream = this.getClass().getResourceAsStream("/reports/IzvestajRestoran.jrxml");
 			JasperReport jasperReport = JasperCompileManager.compileReport(inputStream);
 			Map<String, Object> params = new HashMap<String, Object>();
-			
-			
-			
+
 			JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, params, dataSource);
 			inputStream.close();
 
 			response.setContentType("application/x-download");
-			response.addHeader("Content-disposition", "attachment; filename=HranaIzvestaj.pdf");
+			response.addHeader("Content-disposition", "attachment; filename=EasyFoodIzvestaj.pdf");
 			OutputStream out = response.getOutputStream();
 			JasperExportManager.exportReportToPdfStream(jasperPrint, out);
 		} catch (Exception e) {
@@ -83,29 +65,28 @@ public class IzvestajController {
 			e.printStackTrace();
 		}
 	}
-	
+
 	@RequestMapping(value = "/datum", method = RequestMethod.GET)
-	public void datum(HttpServletRequest request,Date  pocetniD,Date zavrsniD) {
-		
+	public void datum(HttpServletRequest request, Date pocetniD, Date zavrsniD) {
+
 		List<Porudzbina> porudzbine = pr.findByDatum(pocetniD, zavrsniD);
-		
+
 		request.getSession().setAttribute("porudzbine", porudzbine);
-		
+
 		try {
 			generisiIzvestaj(porudzbine);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 	}
-	
+
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
-	    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-	    sdf.setLenient(true);
-	    binder.registerCustomEditor(Date.class, new CustomDateEditor(sdf, true));
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		sdf.setLenient(true);
+		binder.registerCustomEditor(Date.class, new CustomDateEditor(sdf, true));
 	}
-	
-}
 
+}

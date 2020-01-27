@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="/Projekat/css/style.css">
+<link rel="stylesheet" type="text/css" href="/Projekat/css/style2.css">
 <title>Unos jela</title>
 </head>
 <body>
@@ -21,7 +22,7 @@
 		Unesite kategoriju za jelo : <input type="text" name = "kategorijaJ"><br>
 		<input type="hidden" name="${_csrf.parameterName}"
 					value="${_csrf.token}" />
-		<input type="submit" value = "Unesite novo jelo"><br>
+		<input class = "dugme" type="submit" value = "Unesite novo jelo"><br>
 	</form>
 	
 

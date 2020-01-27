@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="/Projekat/css/style.css">
+<link rel="stylesheet" type="text/css" href="/Projekat/css/style2.css">
 <title>Azuriranje cene</title>
 </head>
 <body>
@@ -14,7 +15,7 @@
 		
 		<form action="/Projekat/vlasnikController/unosJelaAzuriraj" method="get">
 			Unesite naziv jela: <input type="text" name = "nazivJ"><br>
-			<input type="submit" value = "Prikazi jelo"><br>
+			<input class = "dugme" type="submit" value = "Prikaži jelo"><br>
 		</form>
 		
 		<c:if test="${!empty jela }">
@@ -22,7 +23,7 @@
 			${jela.naziv} i cena ${jela.cena}<br>
 			Unesite novu cenu jela: <input type="text" name = "cena"><br>
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-			<input type="submit" value = "Azuriraj">
+			<input class = "dugme" type="submit" value = "Ažuriraj">
 		</form>
 		
 		</c:if>
@@ -32,7 +33,7 @@
 		</c:if>
 		
 		<c:if test="${!empty jelo }">
-			Cena jela je uspeso azurirana.
+			Cena jela je uspešo ažurirana.
 		</c:if>
 	
 </body>

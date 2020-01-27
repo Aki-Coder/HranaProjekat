@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="/Projekat/css/style.css">
+<link rel="stylesheet" type="text/css" href="/Projekat/css/style2.css">
 <title>Insert title here</title>
 </head>
 <body>
@@ -21,7 +22,7 @@
 		<a href = "/Projekat/pages/izvestaj.jsp">Izveštaji</a>
 	</sec:authorize>
 	<form action="/Projekat/logout" method="post">
-		<input type="submit" value="Odjavi se">
+		<input class = "dugme" type="submit" value="Odjavi se">
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 	</form>
 	

@@ -8,7 +8,7 @@
 <title>Poruka za isporuku</title>
 </head>
 <body>
-	<p>Vasa narudzbina je uspesno porucena</p>
+	<p>Vaša narudžbina je uspešno poručena</p>
 	
 </body>
 </html>

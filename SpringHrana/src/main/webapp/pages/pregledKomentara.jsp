@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="/Projekat/css/style.css">
+<link rel="stylesheet" type="text/css" href="/Projekat/css/style2.css">
 <title>Pregled komentara</title>
 </head>
 <body>
@@ -13,7 +14,7 @@
 
 	<form action="/Projekat/vlasnikController/pregledKomm" method="get">
 		Unesite naziv jela za koji zelite da vidite pregled komentara : <input type="text" name = "nazivJela"><br>
-		<input type="submit" value = "Prikazi komentare">
+		<input class = "dugme" type="submit" value = "Prikazi komentare">
 	</form>
 	
 	
@@ -41,7 +42,7 @@
 		
 		<input type="hidden" name="${_csrf.parameterName}"
 					value="${_csrf.token}" />
-		<input type="submit" value="Obrisi komentar/e">
+		<input class ="dugme"  type="submit" value="Obriši komentar/e">
 	<c:if test="${empty komentari }">
 		Za izabrano jelo ne postoje komentari.
 	</c:if>

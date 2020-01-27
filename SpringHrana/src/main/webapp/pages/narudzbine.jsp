@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="/Projekat/css/style.css">
+<link rel="stylesheet" type="text/css" href="/Projekat/css/style2.css">
 <title>Narudzbine</title>
 </head>
 <body>
@@ -43,7 +44,7 @@
 
 		</table>
 
-		<input type="submit" value="Isporuci">
+		<input class = "dugme" type="submit" value="Isporuči">
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 	</form>
 

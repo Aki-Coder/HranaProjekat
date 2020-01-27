@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="/Projekat/css/style.css">
+<link rel="stylesheet" type="text/css" href="/Projekat/css/style2.css">
 <title>Jela iz restorana</title>
 
 </head>
@@ -35,7 +36,7 @@
 			<c:if test="${empty kuhinje}">
 				<span>Na stanju nema kuhinja</span>
 			</c:if>
-			<input type="submit" value="Pretraga">
+			<input class = "dugme" type="submit" value="Pretraga">
 		</form>
 		
 		
@@ -73,7 +74,7 @@
 		</table><br>
 		<input type="hidden" name="${_csrf.parameterName}"
 					value="${_csrf.token}" />
-		<input type="submit" value="Naruči odabrana jela">
+		<input class = "dugme" type="submit" value="Naruči odabrana jela">
 		</form>
 	</c:if>
 	
