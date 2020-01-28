@@ -1,11 +1,34 @@
 @charset "UTF-8";
 
-.dugme{
-  background-color: #cc00cc;
-  border: none;
-  color: white;
-  padding: 16px 32px;
-  text-decoration: none;
-  margin: 4px 2px;
-  cursor: pointer;
+.dugme {
+	background-color: #cc00cc;
+	border: none;
+	color: white;
+	padding: 16px 32px;
+	text-decoration: none;
+	margin: 4px 2px;
+	cursor: pointer;
+}
+
+select {
+	appearance: none;
+	outline: 0;
+	background: #cc00cc;
+	width: 100%;
+	height: 100%;
+	color: black;
+	cursor: pointer;
+	border: 1px solid black;
+	border-radius: 3px;
+}
+
+.select {
+	position: relative;
+	display: block;
+	width: 15em;
+	height: 2em;
+	line-height: 3;
+	overflow: hidden;
+	border-radius: .25em;
+	padding-bottom: 10px;
 }
